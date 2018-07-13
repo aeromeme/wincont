@@ -1,0 +1,697 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="WINCONT" EntityNamespace="InventarioDB" ContextNamespace="InventarioContext" Class="InventarioDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LOCALHOST\SQLEXPRESS;Initial Catalog=WINCONT;Integrated Security=True" SettingsObjectName="winCont.Properties.Settings" SettingsPropertyName="WINCONTConnectionString5" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.INV_ENCA_REQ" Member="INV_ENCA_REQ">
+    <Type Name="INV_ENCA_REQ">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_UBICACION_SOLI" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_TIPO_DOCUMENTO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_SERIE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CD_NUMERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FE_FECHA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DS_REFERENCIA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE_SOLICITANTE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CD_ESTA_DOCUMENTO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="INV_ENCA_REQ_INV_DETA_REQ" Member="INV_DETA_REQ" ThisKey="ID" OtherKey="ID_REQ" Type="INV_DETA_REQ" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_INV_ENCA_REQ" Member="V_INV_ENCA_REQ">
+    <Type Name="V_INV_ENCA_REQ">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_TIPO_DOCUMENTO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_SERIE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CD_NUMERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FE_FECHA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DS_REFERENCIA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE_SOLICITANTE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CD_ESTA_DOCUMENTO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ID_UBICACION_SOLI" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_DOCUMENTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_UBICACION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INV_DETA_REQ" Member="INV_DETA_REQ">
+    <Type Name="INV_DETA_REQ">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_REQ" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_ARTICULO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_CANTIDAD" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_CANT_DESP" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Association Name="INV_DETA_REQ_INV_DETA_DESP" Member="INV_DETA_DESP" ThisKey="ID" OtherKey="ID_DESP" Type="INV_DETA_DESP" />
+      <Association Name="INV_ENCA_REQ_INV_DETA_REQ" Member="INV_ENCA_REQ" ThisKey="ID_REQ" OtherKey="ID" Type="INV_ENCA_REQ" IsForeignKey="true" />
+      <Association Name="INV_ARTICULO_INV_DETA_REQ" Member="INV_ARTICULO" ThisKey="ID_ARTICULO" OtherKey="ID" Type="INV_ARTICULO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INV_EXISTENCIA" Member="INV_EXISTENCIA">
+    <Type Name="INV_EXISTENCIA">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_BODEGA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_ARTICULO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_CANT_INI" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_ENTRADA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_SALIDA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_CANT_ACTUAL" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_COSTO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INV_MOV" Member="INV_MOV">
+    <Type Name="INV_MOV">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_DOC_ORIG" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_TIPO_DOCUMENTO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_BODEGA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_REFERENCIA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ID_ARTICULO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_CANTIDAD" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_COSTO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="FE_FECHA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INV_DETA_DESP" Member="INV_DETA_DESP">
+    <Type Name="INV_DETA_DESP">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_DESP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_ARTICULO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_CANTIDAD" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="ID_DETA_REQ" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FLG_DESP" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="INV_DETA_REQ_INV_DETA_DESP" Member="INV_DETA_REQ" ThisKey="ID_DESP" OtherKey="ID" Type="INV_DETA_REQ" IsForeignKey="true" />
+      <Association Name="INV_ENCA_DESP_INV_DETA_DESP" Member="INV_ENCA_DESP" ThisKey="ID_DESP" OtherKey="ID" Type="INV_ENCA_DESP" IsForeignKey="true" />
+      <Association Name="INV_ARTICULO_INV_DETA_DESP" Member="INV_ARTICULO" ThisKey="ID_ARTICULO" OtherKey="ID" Type="INV_ARTICULO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INV_DETA_AJUS" Member="INV_DETA_AJUS">
+    <Type Name="INV_DETA_AJUS">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_AJUS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_ARTICULO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_CANTIDAD" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_PRECIO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="FLG_PROC" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="INV_ENCA_AJUS_INV_DETA_AJUS" Member="INV_ENCA_AJUS" ThisKey="ID_AJUS" OtherKey="ID" Type="INV_ENCA_AJUS" IsForeignKey="true" />
+      <Association Name="INV_ARTICULO_INV_DETA_AJUS" Member="INV_ARTICULO" ThisKey="ID_ARTICULO" OtherKey="ID" Type="INV_ARTICULO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INV_ENCA_AJUS" Member="INV_ENCA_AJUS">
+    <Type Name="INV_ENCA_AJUS">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_UBICACION_BODEGA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_TIPO_DOCUMENTO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_SERIE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CD_NUMERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FE_FECHA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DS_REFERENCIA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE_PROCESADOR" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CD_ESTA_DOCUMENTO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="INV_ENCA_AJUS_INV_DETA_AJUS" Member="INV_DETA_AJUS" ThisKey="ID" OtherKey="ID_AJUS" Type="INV_DETA_AJUS" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_INV_DETA_AJUS" Member="V_INV_DETA_AJUS">
+    <Type Name="V_INV_DETA_AJUS">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_ARTICULO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_AJUS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_CANTIDAD" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE_ALTER" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_UNIMED" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CD_SERIE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CD_NUMERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_UBICACION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DS_DOCUMENTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CD_ESTA_DOCUMENTO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FLG_PROC" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="NM_PRECIO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INV_ENCA_DESP" Member="INV_ENCA_DESP">
+    <Type Name="INV_ENCA_DESP">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_UBICACION_DESP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_TIPO_DOCUMENTO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_SERIE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CD_NUMERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FE_FECHA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DS_REFERENCIA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE_DESPACHADOR" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CD_ESTA_DOCUMENTO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CD_ESTA_CONTA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="INV_ENCA_DESP_INV_DETA_DESP" Member="INV_DETA_DESP" ThisKey="ID" OtherKey="ID_DESP" Type="INV_DETA_DESP" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_INV_DETA_REQ" Member="V_INV_DETA_REQ">
+    <Type Name="V_INV_DETA_REQ">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_ARTICULO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_REQ" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_CANTIDAD" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE_ALTER" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_UNIMED" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="NM_CANT_DESP" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_CANT_FALTANTE" Type="System.Decimal" DbType="Decimal(19,6)" CanBeNull="true" />
+      <Column Name="CD_SERIE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CD_NUMERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_UBICACION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DS_DOCUMENTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CD_ESTA_DOCUMENTO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INV_CONFIG" Member="INV_CONFIG">
+    <Type Name="INV_CONFIG">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_CUENTA_INVE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_CUENTA_COMPRA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_CUENTA_CONSUMO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_CUENTA_DEV_COMPRA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_CUENTA_VENTA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_CUENTA_DEVVENTA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_NIVEL_CONT_INVE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CD_NIVEL_CONT_COMPRA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CD_NIVEL_CONT_CONSUMO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CD_NIVEL_CONT_DEV_COMPRA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CD_NIVEL_CONT_VENTA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CD_NIVEL_CONT_DEVVENTA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INV_CONF_CONTABLE" Member="INV_CONF_CONTABLE">
+    <Type Name="INV_CONF_CONTABLE">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_FAMILIA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_GRUPO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_CATE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_ARTI" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_CUENTA_INVE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_CUENTA_COMPRA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_CUENTA_CONSUMO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_CUENTA_DEVCOMPRA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_CUENTA_VENTA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_CUENTA_DEVVENTA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_INV_ENCA_DESP" Member="V_INV_ENCA_DESP">
+    <Type Name="V_INV_ENCA_DESP">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_TIPO_DOCUMENTO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_SERIE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CD_NUMERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FE_FECHA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DS_REFERENCIA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE_DESPACHADOR" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CD_ESTA_DOCUMENTO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DS_DOCUMENTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ID_UBICACION_DESP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_UBICACION_DESP" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CD_ESTA_CONTA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ID_PART_PRFM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_INV_DETA_DESP" Member="V_INV_DETA_DESP">
+    <Type Name="V_INV_DETA_DESP">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_ARTICULO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_DESP" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_CANTIDAD" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE_ALTER" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_UNIMED" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="ID_DETA_REQ" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FLG_DESP" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CD_ESTA_DOCUMENTO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="NM_CANT_SOLICITADA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_CANT_DESP" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_CANT_FALTANTE" Type="System.Decimal" DbType="Decimal(19,6)" CanBeNull="true" />
+      <Column Name="NM_EXISTENCIA" Type="System.Decimal" DbType="Decimal(18,6) NOT NULL" CanBeNull="false" />
+      <Column Name="NM_COST_EXISTENCIA" Type="System.Decimal" DbType="Decimal(18,6) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_INV_EXISTENCIA" Member="V_INV_EXISTENCIA">
+    <Type Name="V_INV_EXISTENCIA">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_BODEGA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_ARTICULO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_CANT_INI" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_ENTRADA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_SALIDA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_CANT_ACTUAL" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_COSTO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="DS_ARTICULO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_UBICACION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_INV_ENCA_AJUS" Member="V_INV_ENCA_AJUS">
+    <Type Name="V_INV_ENCA_AJUS">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_TIPO_DOCUMENTO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_SERIE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CD_NUMERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FE_FECHA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DS_REFERENCIA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE_PROCESADOR" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CD_ESTA_DOCUMENTO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ID_UBICACION_BODEGA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_DOCUMENTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_UBICACION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CD_TIPO_DOCUMENTO" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_INV_MOV" Member="V_INV_MOV">
+    <Type Name="V_INV_MOV">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_DOC_ORIG" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_TIPO_DOCUMENTO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_BODEGA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_REFERENCIA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ID_ARTICULO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_CANTIDAD" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_COSTO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="FE_FECHA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="NM_PRECIO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_EXISTENCIA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="SIGNO_MOV" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_UBICACION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DS_DOCUMENTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_ARTICULO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INV_DETA_ORDEN" Member="INV_DETA_ORDEN">
+    <Type Name="INV_DETA_ORDEN">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_ORDEN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_ARTICULO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_CANTIDAD" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_CANT_RECIBIDA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_EXENTO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_IVA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_PRECIO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_RENTA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_GRAVADO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Association Name="INV_DETA_ORDEN_INV_DETA_INGR" Member="INV_DETA_INGR" ThisKey="ID" OtherKey="ID_DETA_ORDEN" Type="INV_DETA_INGR" />
+      <Association Name="INV_ENCA_ORDEN_INV_DETA_ORDEN" Member="INV_ENCA_ORDEN" ThisKey="ID_ORDEN" OtherKey="ID" Type="INV_ENCA_ORDEN" IsForeignKey="true" />
+      <Association Name="INV_ARTICULO_INV_DETA_ORDEN" Member="INV_ARTICULO" ThisKey="ID_ARTICULO" OtherKey="ID" Type="INV_ARTICULO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INV_DETA_INGR" Member="INV_DETA_INGR">
+    <Type Name="INV_DETA_INGR">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_INGR" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_ARTICULO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NM_CANTIDAD" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_PRECIO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_IVA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_RENTA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_EXENTO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_GRAVADO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="FLG_INGR" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ID_DETA_ORDEN" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Association Name="INV_DETA_ORDEN_INV_DETA_INGR" Member="INV_DETA_ORDEN" ThisKey="ID_DETA_ORDEN" OtherKey="ID" Type="INV_DETA_ORDEN" IsForeignKey="true" />
+      <Association Name="INV_ENCA_INGR_INV_DETA_INGR" Member="INV_ENCA_INGR" ThisKey="ID_INGR" OtherKey="ID" Type="INV_ENCA_INGR" IsForeignKey="true" />
+      <Association Name="INV_ARTICULO_INV_DETA_INGR" Member="INV_ARTICULO" ThisKey="ID_ARTICULO" OtherKey="ID" Type="INV_ARTICULO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_INV_DETA_ORDEN" Member="V_INV_DETA_ORDEN">
+    <Type Name="V_INV_DETA_ORDEN">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_ARTICULO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_ORDEN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_CANTIDAD" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE_ALTER" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_UNIMED" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="NM_CANT_RECIBIDA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_CANT_FALTANTE" Type="System.Decimal" DbType="Decimal(19,6)" CanBeNull="true" />
+      <Column Name="CD_SERIE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CD_NUMERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_UBICACION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DS_DOCUMENTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CD_ESTA_DOCUMENTO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="NM_EXENTO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_IVA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_PRECIO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_RENTA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_GRAVADO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_TOTAL" Type="System.Decimal" DbType="Decimal(21,6)" CanBeNull="true" />
+      <Column Name="ID_TERCERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_INV_DETA_INGR" Member="V_INV_DETA_INGR">
+    <Type Name="V_INV_DETA_INGR">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_ARTICULO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_INGR" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NM_CANTIDAD" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE_ALTER" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_UNIMED" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="FLG_INGR" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CD_SERIE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CD_NUMERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_UBICACION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DS_DOCUMENTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CD_ESTA_DOCUMENTO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="NM_EXENTO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_IVA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_PRECIO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_RENTA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_GRAVADO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_TOTAL" Type="System.Decimal" DbType="Decimal(21,6)" CanBeNull="true" />
+      <Column Name="ID_DETA_ORDEN" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NM_CANT_SOLICITADA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_CANT_RECIBIDA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_CANT_FALTANTE" Type="System.Decimal" DbType="Decimal(19,6)" CanBeNull="true" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INV_ENCA_ORDEN" Member="INV_ENCA_ORDEN">
+    <Type Name="INV_ENCA_ORDEN">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_UBICACION_SOLI" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_TIPO_DOCUMENTO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_SERIE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CD_NUMERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_TERCERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_TIPO_DOCUMENTO_SOLICITADO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FLG_CREDITO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FE_FECHA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DS_REFERENCIA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE_SOLICITANTE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="NM_GRAVADO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_EXENTO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_IVA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_RETENCION" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_PERCEPCION" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_RENTA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_TOTAL" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="CD_ESTA_DOCUMENTO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DS_OBSERVACION" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Association Name="INV_ENCA_ORDEN_INV_DETA_ORDEN" Member="INV_DETA_ORDEN" ThisKey="ID" OtherKey="ID_ORDEN" Type="INV_DETA_ORDEN" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INV_ENCA_INGR" Member="INV_ENCA_INGR">
+    <Type Name="INV_ENCA_INGR">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_UBICACION_INGR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_TIPO_DOCUMENTO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_SERIE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CD_NUMERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_TERCERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FLG_CREDITO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FE_FECHA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DS_REFERENCIA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE_RECEPCIONISTA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CD_ESTA_DOCUMENTO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ID_TIPO_DOCUMENTO_PROV" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CD_SERIE_PROV" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CD_NUMERO_PROV" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_COMPRA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_GRAVADO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_EXENTO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_IVA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_RETENCION" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_PERCEPCION" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_RENTA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_TOTAL" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="CD_ESTA_CONTA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="INV_ENCA_INGR_INV_DETA_INGR" Member="INV_DETA_INGR" ThisKey="ID" OtherKey="ID_INGR" Type="INV_DETA_INGR" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_INV_ENCA_INGR" Member="V_INV_ENCA_INGR">
+    <Type Name="V_INV_ENCA_INGR">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_TIPO_DOCUMENTO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_SERIE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CD_NUMERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FE_FECHA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DS_REFERENCIA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE_RECEPCIONISTA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CD_ESTA_DOCUMENTO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ID_UBICACION_INGR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_DOCUMENTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_UBICACION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ID_TERCERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_NOMBRE" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DS_DIRECCION" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="CD_TIPO_CONTRIBUYENTE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DS_NM_RF" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DS_NM_DUI" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="DS_NM_NIT" Type="System.String" DbType="VarChar(17)" CanBeNull="true" />
+      <Column Name="DS_RZN_COMER" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DS_COD_DEPT" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="DS_COD_MUNIC" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="DS_COD_PAIS" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="ID_TIPO_DOCUMENTO_PROV" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CD_SERIE_PROV" Type="System.String" DbType="VarChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="CD_NUMERO_PROV" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DS_DOCUMENTO_PROV" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CD_ESTA_CONTA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FLG_CREDITO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ID_COMPRA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_EXENTO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_GRAVADO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_IVA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_PERCEPCION" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_RETENCION" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_RENTA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_TOTAL" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="DS_CONDICION" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_INV_ENCA_ORDEN" Member="V_INV_ENCA_ORDEN">
+    <Type Name="V_INV_ENCA_ORDEN">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_TIPO_DOCUMENTO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_SERIE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CD_NUMERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FE_FECHA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DS_REFERENCIA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE_SOLICITANTE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CD_ESTA_DOCUMENTO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ID_UBICACION_SOLI" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_DOCUMENTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_UBICACION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ID_TERCERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_NOMBRE" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DS_DIRECCION" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="CD_TIPO_CONTRIBUYENTE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DS_NM_RF" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DS_NM_DUI" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="DS_NM_NIT" Type="System.String" DbType="VarChar(17)" CanBeNull="true" />
+      <Column Name="DS_RZN_COMER" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DS_COD_DEPT" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="DS_COD_MUNIC" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="DS_COD_PAIS" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="FLG_CREDITO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="NM_EXENTO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_GRAVADO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_IVA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_PERCEPCION" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_RETENCION" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_RENTA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_TOTAL" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="ID_TIPO_DOCUMENTO_SOLICITADO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_DOCUMENTO_SOLICITADO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_CONDICION" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="DS_OBSERVACION" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INV_FAMILIA" Member="INV_FAMILIA">
+    <Type Name="INV_FAMILIA">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DS_FAMILIA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="FLG_SERVICIO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CD_LINEA" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Association Name="INV_FAMILIA_INV_GRUPO" Member="INV_GRUPO" ThisKey="ID" OtherKey="ID_FAMILIA" Type="INV_GRUPO" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INV_GRUPO" Member="INV_GRUPO">
+    <Type Name="INV_GRUPO">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_FAMILIA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_GRUPO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CD_LINEA" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Association Name="INV_GRUPO_INV_CATEGORIA" Member="INV_CATEGORIA" ThisKey="ID" OtherKey="ID_GRUPO" Type="INV_CATEGORIA" />
+      <Association Name="INV_FAMILIA_INV_GRUPO" Member="INV_FAMILIA" ThisKey="ID_FAMILIA" OtherKey="ID" Type="INV_FAMILIA" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_INV_ARTICULO" Member="V_INV_ARTICULO">
+    <Type Name="V_INV_ARTICULO">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_NOMBRE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE_ALTER" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_REFERENCIA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="NM_CANT_MAX" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_CANT_MIN" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="ID_UNI_MED" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_CATE_ARTI" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FLG_VERI_EXIS_VENT" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CD_BARRA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="FLG_EXEN_IMPU" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DS_UNIMED" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="DS_CATEGORIA" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="DS_GRUPO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_FAMILIA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="FLG_SERVICIO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FLG_INVENTARIABLE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ID_GRUPO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_FAMILIA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_LINEA" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+      <Column Name="CD_CLAVE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INV_CATEGORIA" Member="INV_CATEGORIA">
+    <Type Name="INV_CATEGORIA">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_GRUPO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_CATEGORIA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CD_LINEA" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Association Name="INV_CATEGORIA_INV_ARTICULO" Member="INV_ARTICULO" ThisKey="ID" OtherKey="ID_CATE_ARTI" Type="INV_ARTICULO" />
+      <Association Name="INV_GRUPO_INV_CATEGORIA" Member="INV_GRUPO" ThisKey="ID_GRUPO" OtherKey="ID" Type="INV_GRUPO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_INV_CATEGORIA" Member="V_INV_CATEGORIA">
+    <Type Name="V_INV_CATEGORIA">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DS_CATEGORIA" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="ID_GRUPO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_GRUPO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ID_FAMILIA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_FAMILIA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CD_LINEA" Type="System.String" DbType="Char(2)" CanBeNull="true" />
+      <Column Name="CD_LINEA_COMPLETA" Type="System.String" DbType="Char(6)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INV_UNIMED" Member="INV_UNIMED">
+    <Type Name="INV_UNIMED">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_UNIMED" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_SIMBOLO" Type="System.String" DbType="VarChar(3)" CanBeNull="true" />
+      <Association Name="INV_UNIMED_INV_ARTICULO" Member="INV_ARTICULO" ThisKey="ID" OtherKey="ID_UNI_MED" Type="INV_ARTICULO" />
+    </Type>
+  </Table>
+  <Table Name="dbo.INV_ARTICULO" Member="INV_ARTICULO">
+    <Type Name="INV_ARTICULO">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_CLAVE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE_ALTER" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_REFERENCIA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="NM_CANT_MAX" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_CANT_MIN" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="ID_UNI_MED" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_CATE_ARTI" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FLG_VERI_EXIS_VENT" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CD_BARRA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="FLG_EXEN_IMPU" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FLG_INVENTARIABLE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="INV_ARTICULO_INV_DETA_REQ" Member="INV_DETA_REQ" ThisKey="ID" OtherKey="ID_ARTICULO" Type="INV_DETA_REQ" />
+      <Association Name="INV_ARTICULO_INV_DETA_DESP" Member="INV_DETA_DESP" ThisKey="ID" OtherKey="ID_ARTICULO" Type="INV_DETA_DESP" />
+      <Association Name="INV_ARTICULO_INV_DETA_AJUS" Member="INV_DETA_AJUS" ThisKey="ID" OtherKey="ID_ARTICULO" Type="INV_DETA_AJUS" />
+      <Association Name="INV_ARTICULO_INV_DETA_ORDEN" Member="INV_DETA_ORDEN" ThisKey="ID" OtherKey="ID_ARTICULO" Type="INV_DETA_ORDEN" />
+      <Association Name="INV_ARTICULO_INV_DETA_INGR" Member="INV_DETA_INGR" ThisKey="ID" OtherKey="ID_ARTICULO" Type="INV_DETA_INGR" />
+      <Association Name="INV_CATEGORIA_INV_ARTICULO" Member="INV_CATEGORIA" ThisKey="ID_CATE_ARTI" OtherKey="ID" Type="INV_CATEGORIA" IsForeignKey="true" />
+      <Association Name="INV_UNIMED_INV_ARTICULO" Member="INV_UNIMED" ThisKey="ID_UNI_MED" OtherKey="ID" Type="INV_UNIMED" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.PR_INV_ACTU_DETA_INGR" Method="PR_INV_ACTU_DETA_INGR">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID_EMPRESA" Parameter="iD_EMPRESA" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NM_ERROR" Parameter="nM_ERROR" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="MSJ_ERROR" Parameter="mSJ_ERROR" Type="System.String" DbType="VarChar(100)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PR_INV_ACTU_DETA_ORDE_COMP" Method="PR_INV_ACTU_DETA_ORDE_COMP">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID_EMPRESA" Parameter="iD_EMPRESA" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NM_ERROR" Parameter="nM_ERROR" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="MSJ_ERROR" Parameter="mSJ_ERROR" Type="System.String" DbType="VarChar(100)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PR_INV_PROC_DESPACHO" Method="PR_INV_PROC_DESPACHO">
+    <Parameter Name="ID_EMPRESA" Parameter="iD_EMPRESA" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID_BODEGA" Parameter="iD_BODEGA" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NM_EJERCICIO" Parameter="nM_EJERCICIO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NM_PERIODO" Parameter="nM_PERIODO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID_ARTICULO" Parameter="iD_ARTICULO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NM_CANTIDAD" Parameter="nM_CANTIDAD" Type="System.Decimal" DbType="Decimal(18,6)" />
+    <Parameter Name="ID_DOC_ORIG" Parameter="iD_DOC_ORIG" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID_TIPO_DOCUMENTO" Parameter="iD_TIPO_DOCUMENTO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DS_REFERENCIA" Parameter="dS_REFERENCIA" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="NM_ERROR" Parameter="nM_ERROR" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="MSJ_ERROR" Parameter="mSJ_ERROR" Type="System.String" DbType="VarChar(100)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PR_INV_PROC_INGRESO" Method="PR_INV_PROC_INGRESO">
+    <Parameter Name="ID_EMPRESA" Parameter="iD_EMPRESA" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID_BODEGA" Parameter="iD_BODEGA" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NM_EJERCICIO" Parameter="nM_EJERCICIO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NM_PERIODO" Parameter="nM_PERIODO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID_ARTICULO" Parameter="iD_ARTICULO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NM_CANTIDAD" Parameter="nM_CANTIDAD" Type="System.Decimal" DbType="Decimal(18,6)" />
+    <Parameter Name="NM_PRECIO" Parameter="nM_PRECIO" Type="System.Decimal" DbType="Decimal(18,6)" />
+    <Parameter Name="ID_DOC_ORIG" Parameter="iD_DOC_ORIG" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID_TIPO_DOCUMENTO" Parameter="iD_TIPO_DOCUMENTO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DS_REFERENCIA" Parameter="dS_REFERENCIA" Type="System.String" DbType="VarChar(100)" />
+    <Parameter Name="NM_ERROR" Parameter="nM_ERROR" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="MSJ_ERROR" Parameter="mSJ_ERROR" Type="System.String" DbType="VarChar(100)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PR_CONT_GENE_CONT_DESP" Method="PR_CONT_GENE_CONT_DESP" IsComposable="true">
+    <Parameter Name="ID_DESP" Parameter="iD_DESP" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NM_ERROR" Parameter="nM_ERROR" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="MSJ_ERROR" Parameter="mSJ_ERROR" Type="System.String" DbType="VarChar(100)" Direction="InOut" />
+    <Return Type="object" />
+  </Function>
+</Database>

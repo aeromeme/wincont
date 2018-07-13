@@ -1,0 +1,363 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="WINCONT" EntityNamespace="Sistema" ContextNamespace="SistemaContext" Class="SistemaDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LOCALHOST\SQLEXPRESS;Initial Catalog=WINCONT;Integrated Security=True" SettingsObjectName="winCont.Properties.Settings" SettingsPropertyName="WINCONTConnectionString5" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.SIS_USER" Member="SIS_USER">
+    <Type Name="SIS_USER">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CD_LOGIN" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CD_PASSWORD" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE_USUARIO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ID_PERFIL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_ESTADO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="SIS_USER_SIS_USER_EMPRESA" Member="SIS_USER_EMPRESA" ThisKey="ID" OtherKey="ID_USER" Type="SIS_USER_EMPRESA" />
+      <Association Name="SIS_PERFIL_SIS_USER" Member="SIS_PERFIL" ThisKey="ID_PERFIL" OtherKey="ID" Type="SIS_PERFIL" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SIS_MODULO" Member="SIS_MODULO">
+    <Type Name="SIS_MODULO">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DS_MODULO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CD_IMAGEN_ICO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="SIS_MODULO_SIS_FORM" Member="SIS_FORM" ThisKey="ID" OtherKey="ID_MODULO" Type="SIS_FORM" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SIS_MENU" Member="SIS_MENU">
+    <Type Name="SIS_MENU">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DS_MENU" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="SIS_MENU_SIS_OPC_MENU" Member="SIS_OPC_MENU" ThisKey="ID" OtherKey="ID_MENU" Type="SIS_OPC_MENU" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SIS_OPC_MENU" Member="SIS_OPC_MENU">
+    <Type Name="SIS_OPC_MENU">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_MENU" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_FORM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="SIS_OPC_MENU_SIS_PERFIL_OPC_MENU" Member="SIS_PERFIL_OPC_MENU" ThisKey="ID" OtherKey="ID_OPC_MENU" Type="SIS_PERFIL_OPC_MENU" />
+      <Association Name="SIS_MENU_SIS_OPC_MENU" Member="SIS_MENU" ThisKey="ID_MENU" OtherKey="ID" Type="SIS_MENU" IsForeignKey="true" />
+      <Association Name="SIS_FORM_SIS_OPC_MENU" Member="SIS_FORM" ThisKey="ID_FORM" OtherKey="ID" Type="SIS_FORM" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SIS_PERFIL" Member="SIS_PERFIL">
+    <Type Name="SIS_PERFIL">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DS_PERFIL" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Association Name="SIS_PERFIL_SIS_USER" Member="SIS_USER" ThisKey="ID" OtherKey="ID_PERFIL" Type="SIS_USER" />
+      <Association Name="SIS_PERFIL_SIS_PERFIL_OPC_MENU" Member="SIS_PERFIL_OPC_MENU" ThisKey="ID" OtherKey="ID_PERFIL" Type="SIS_PERFIL_OPC_MENU" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SIS_PERFIL_OPC_MENU" Member="SIS_PERFIL_OPC_MENU">
+    <Type Name="SIS_PERFIL_OPC_MENU">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_PERFIL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_OPC_MENU" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="SIS_OPC_MENU_SIS_PERFIL_OPC_MENU" Member="SIS_OPC_MENU" ThisKey="ID_OPC_MENU" OtherKey="ID" Type="SIS_OPC_MENU" IsForeignKey="true" />
+      <Association Name="SIS_PERFIL_SIS_PERFIL_OPC_MENU" Member="SIS_PERFIL" ThisKey="ID_PERFIL" OtherKey="ID" Type="SIS_PERFIL" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_SIS_PERFIL_OPC_MENU" Member="V_SIS_PERFIL_OPC_MENU">
+    <Type Name="V_SIS_PERFIL_OPC_MENU">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_OPC_MENU" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_PERFIL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_PERFIL" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_MENU" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_SIS_USER" Member="V_SIS_USER">
+    <Type Name="V_SIS_USER">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CD_LOGIN" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CD_PASSWORD" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE_USUARIO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="ID_PERFIL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_ESTADO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_PERFIL" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SIS_PERIODO" Member="SIS_PERIODO">
+    <Type Name="SIS_PERIODO">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_ESTADO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="SIS_EMPRESAS_SIS_PERIODO" Member="SIS_EMPRESAS" ThisKey="ID_EMPRESA" OtherKey="ID" Type="SIS_EMPRESAS" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SIS_EMPRESAS" Member="SIS_EMPRESAS">
+    <Type Name="SIS_EMPRESAS">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DS_EMPRESA" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="DS_RAZON_SOCIAL" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="CD_TIPO_CONTRIBUYENTE" Type="System.String" DbType="VarChar(2)" CanBeNull="true" />
+      <Column Name="DS_DIRECCION" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="DS_NIT" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="DS_NRF" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="DS_CONTACTO_1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_CONTACTO_2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_TELEFONO_1" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_TELEFONO_2" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_CORREO_E" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_GERENTE" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="DS_CONTADOR" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="DS_AUDITOR" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="USUA_CREA" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="FECH_CREA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="USUA_ACTU" Type="System.String" DbType="VarChar(30)" CanBeNull="true" />
+      <Column Name="FECH_ACTU" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="SIS_EMPRESAS_SIS_PERIODO" Member="SIS_PERIODO" ThisKey="ID" OtherKey="ID_EMPRESA" Type="SIS_PERIODO" />
+      <Association Name="SIS_EMPRESAS_SIS_USER_EMPRESA" Member="SIS_USER_EMPRESA" ThisKey="ID" OtherKey="ID_EMPRESA" Type="SIS_USER_EMPRESA" />
+      <Association Name="SIS_EMPRESAS_SIS_UBICACION" Member="SIS_UBICACION" ThisKey="ID" OtherKey="ID_EMPRESA" Type="SIS_UBICACION" />
+      <Association Name="SIS_EMPRESAS_SIS_TALONARIO" Member="SIS_TALONARIO" ThisKey="ID" OtherKey="ID_EMPRESA" Type="SIS_TALONARIO" />
+      <Association Name="SIS_EMPRESAS_SIS_DOCUMENTO" Member="SIS_DOCUMENTO" ThisKey="ID" OtherKey="ID_EMPRESA" Type="SIS_DOCUMENTO" />
+      <Association Name="SIS_EMPRESAS_SIS_FORMA_PAGO" Member="SIS_FORMA_PAGO" ThisKey="ID" OtherKey="ID_EMPRESA" Type="SIS_FORMA_PAGO" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SIS_USER_EMPRESA" Member="SIS_USER_EMPRESA">
+    <Type Name="SIS_USER_EMPRESA">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_USER" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="SIS_EMPRESAS_SIS_USER_EMPRESA" Member="SIS_EMPRESAS" ThisKey="ID_EMPRESA" OtherKey="ID" Type="SIS_EMPRESAS" IsForeignKey="true" />
+      <Association Name="SIS_USER_SIS_USER_EMPRESA" Member="SIS_USER" ThisKey="ID_USER" OtherKey="ID" Type="SIS_USER" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_SIS_USER_EMPRESA" Member="V_SIS_USER_EMPRESA">
+    <Type Name="V_SIS_USER_EMPRESA">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_USER" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_NOMBRE_USUARIO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_EMPRESA" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SIS_FORM" Member="SIS_FORM">
+    <Type Name="SIS_FORM">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CD_FORM" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DS_ALT_NOMBRE" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DS_TOOLTIP" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="ID_MODULO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_MODO_INTERFAZ" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FLG_REQ_EMPRESA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FLG_REQ_PERIODO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="SIS_FORM_SIS_OPC_MENU" Member="SIS_OPC_MENU" ThisKey="ID" OtherKey="ID_FORM" Type="SIS_OPC_MENU" />
+      <Association Name="SIS_MODULO_SIS_FORM" Member="SIS_MODULO" ThisKey="ID_MODULO" OtherKey="ID" Type="SIS_MODULO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_SIS_FORM" Member="V_SIS_FORM">
+    <Type Name="V_SIS_FORM">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CD_FORM" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DS_ALT_NOMBRE" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DS_TOOLTIP" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="ID_MODULO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_MODO_INTERFAZ" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_MODULO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="FLG_REQ_EMPRESA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FLG_REQ_PERIODO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SIS_UBICACION" Member="SIS_UBICACION">
+    <Type Name="SIS_UBICACION">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DS_UBICACION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="CD_TIPO_UBICACION" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="SIS_UBICACION_SIS_TALONARIO" Member="SIS_TALONARIO" ThisKey="ID" OtherKey="ID_UBICACION" Type="SIS_TALONARIO" />
+      <Association Name="SIS_EMPRESAS_SIS_UBICACION" Member="SIS_EMPRESAS" ThisKey="ID_EMPRESA" OtherKey="ID" Type="SIS_EMPRESAS" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_SIS_PERIODO" Member="V_SIS_PERIODO">
+    <Type Name="V_SIS_PERIODO">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_ESTADO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DS_MES" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="DS_PERIODO" Type="System.String" DbType="VarChar(41)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_SIS_TALONARIO" Member="V_SIS_TALONARIO">
+    <Type Name="V_SIS_TALONARIO">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_DOCUMENTO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_UBICACION" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_SERIE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="NM_INICIAL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_ACTUAL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_FINAL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_ESTADO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DS_DOCUMENTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_UBICACION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SIS_TALONARIO" Member="SIS_TALONARIO">
+    <Type Name="SIS_TALONARIO">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_DOCUMENTO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_UBICACION" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_SERIE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="NM_INICIAL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_ACTUAL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_FINAL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_ESTADO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="SIS_EMPRESAS_SIS_TALONARIO" Member="SIS_EMPRESAS" ThisKey="ID_EMPRESA" OtherKey="ID" Type="SIS_EMPRESAS" IsForeignKey="true" />
+      <Association Name="SIS_UBICACION_SIS_TALONARIO" Member="SIS_UBICACION" ThisKey="ID_UBICACION" OtherKey="ID" Type="SIS_UBICACION" IsForeignKey="true" />
+      <Association Name="SIS_DOCUMENTO_SIS_TALONARIO" Member="SIS_DOCUMENTO" ThisKey="ID_DOCUMENTO" OtherKey="ID" Type="SIS_DOCUMENTO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SIS_DOCUMENTO" Member="SIS_DOCUMENTO">
+    <Type Name="SIS_DOCUMENTO">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DS_DOCUMENTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CD_TIPO_DOCUMENTO" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Association Name="SIS_DOCUMENTO_SIS_TALONARIO" Member="SIS_TALONARIO" ThisKey="ID" OtherKey="ID_DOCUMENTO" Type="SIS_TALONARIO" />
+      <Association Name="SIS_EMPRESAS_SIS_DOCUMENTO" Member="SIS_EMPRESAS" ThisKey="ID_EMPRESA" OtherKey="ID" Type="SIS_EMPRESAS" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_SIS_MUNICIPIO" Member="V_SIS_MUNICIPIO">
+    <Type Name="V_SIS_MUNICIPIO">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DS_MUNICIPIO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="NM_COD_MUNIC" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_COD_MUNIC" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="ID_DEPARTAMENTO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_DEPARTAMENTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="NM_COD_DEPT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_COD_DEPT" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+      <Column Name="ID_PAIS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_PAIS" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="NM_COD_PAIS" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_COD_PAIS" Type="System.String" DbType="VarChar(5)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SIS_FORMA_PAGO" Member="SIS_FORMA_PAGO">
+    <Type Name="SIS_FORMA_PAGO">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_FORMA_PAGO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="FLG_CREDITO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="NM_DIAS_PLAZO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="SIS_EMPRESAS_SIS_FORMA_PAGO" Member="SIS_EMPRESAS" ThisKey="ID_EMPRESA" OtherKey="ID" Type="SIS_EMPRESAS" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SIS_CONFIG" Member="SIS_CONFIG">
+    <Type Name="SIS_CONFIG">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_PORC_IVA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_PORC_RETENCION" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_MONTO_SOBRE_RETENCION" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_PORC_RENTA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.SIS_TERCERO" Member="SIS_TERCERO">
+    <Type Name="SIS_TERCERO">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_NOMBRE" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DS_RZN_COMER" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DS_NM_NIT" Type="System.String" DbType="VarChar(17)" CanBeNull="true" />
+      <Column Name="DS_NM_DUI" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="DS_NM_RF" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CD_TIPO_CONTRIBUYENTE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ID_MUNICIPIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_DIRECCION" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="DS_NM_TELEFONO" Type="System.String" DbType="VarChar(9)" CanBeNull="true" />
+      <Column Name="DS_CORREO_E" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_CONTACTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_REFERENCIA" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CD_TIPO_PERSONA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FLG_CLIENTE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FLG_CREDITO_CLIENTE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FLG_CREDITO_PROVEEDOR" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FLG_PROVEEDOR" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ID_CUENTAXCOBRAR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_CUENTAXPAGAR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_LISTA_PRECIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_CREDITO_CLIENTE" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_CREDITO_PROVEEDOR" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_DIAS_CREDITO_CLIENTE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_DIAS_CREDITO_PROVEEDOR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_CANAL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_SALDO_CLIENTE" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_SALDO_PROVEEDOR" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="FLG_PROVEEDOR_EXENTO_IVA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FLG_CLIENTE_EXENTO_IVA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ID_VENDEDOR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_ESTADO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_SIS_TERCERO" Member="V_SIS_TERCERO">
+    <Type Name="V_SIS_TERCERO">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_NOMBRE" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DS_RZN_COMER" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DS_NM_NIT" Type="System.String" DbType="VarChar(17)" CanBeNull="true" />
+      <Column Name="DS_NM_DUI" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="DS_NM_RF" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="CD_TIPO_CONTRIBUYENTE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ID_MUNICIPIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_DIRECCION" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="DS_NM_TELEFONO" Type="System.String" DbType="VarChar(9)" CanBeNull="true" />
+      <Column Name="DS_CORREO_E" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_CONTACTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_REFERENCIA" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CD_TIPO_PERSONA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FLG_CLIENTE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FLG_CREDITO_CLIENTE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FLG_CREDITO_PROVEEDOR" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FLG_PROVEEDOR" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ID_CUENTAXCOBRAR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_CUENTAXPAGAR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_LISTA_PRECIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_CREDITO_CLIENTE" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_CREDITO_PROVEEDOR" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_DIAS_CREDITO_CLIENTE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_DIAS_CREDITO_PROVEEDOR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_CANAL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_SALDO_CLIENTE" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_SALDO_PROVEEDOR" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="FLG_PROVEEDOR_EXENTO_IVA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FLG_CLIENTE_EXENTO_IVA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ID_VENDEDOR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_MUNICIPIO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_DEPARTAMENTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_PAIS" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DS_LISTA" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_CANAL" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_VENDEDOR" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="CD_VENDEDOR" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CD_ESTADO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_SIS_OPC_MENU" Member="V_SIS_OPC_MENU">
+    <Type Name="V_SIS_OPC_MENU">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_FORM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_MENU" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_MENU" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DS_MODULO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.PR_SIS_SERVIR_NUME_TALONARIO" Method="PR_SIS_SERVIR_NUME_TALONARIO">
+    <Parameter Name="ID_EMPRESA" Parameter="iD_EMPRESA" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID_DOCUMENTO" Parameter="iD_DOCUMENTO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID_UBICACION" Parameter="iD_UBICACION" Type="System.Int32" DbType="Int" />
+    <Parameter Name="CD_SERIE" Parameter="cD_SERIE" Type="System.String" DbType="VarChar(10)" Direction="InOut" />
+    <Parameter Name="NM_NUMERO" Parameter="nM_NUMERO" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="NM_ERROR" Parameter="nM_ERROR" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="MSJ_ERROR" Parameter="mSJ_ERROR" Type="System.String" DbType="VarChar(100)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

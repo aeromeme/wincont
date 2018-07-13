@@ -1,0 +1,266 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="WINCONT" EntityNamespace="ContabilidadDB" ContextNamespace="ContabilidadContext" Class="ContabilidadDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LOCALHOST\SQLEXPRESS;Initial Catalog=WINCONT;Integrated Security=True" SettingsObjectName="winCont.Properties.Settings" SettingsPropertyName="WINCONTConnectionString5" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.CONT_DIARIO" Member="CONT_DIARIO">
+    <Type Name="CONT_DIARIO">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_NOMBRE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="FLG_CONSOL_DIA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="CONT_DIARIO_CONT_ENCA_PART_BORRADOR" Member="CONT_ENCA_PART_BORRADOR" ThisKey="ID" OtherKey="ID_DIARIO" Type="CONT_ENCA_PART_BORRADOR" />
+      <Association Name="CONT_DIARIO_CONT_ENCA_PART_DIARIO" Member="CONT_ENCA_PART_DIARIO" ThisKey="ID" OtherKey="ID_DIARIO" Type="CONT_ENCA_PART_DIARIO" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CONT_CENTRO_COSTO" Member="CONT_CENTRO_COSTO">
+    <Type Name="CONT_CENTRO_COSTO">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_NOMBRE" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CONT_NIVEL_CUENTA" Member="CONT_NIVEL_CUENTA">
+    <Type Name="CONT_NIVEL_CUENTA">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_NIVEL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_CANT_CARACTERES" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CONT_NIVEL_CUENTA_CONT_CUENTA" Member="CONT_CUENTA" ThisKey="ID" OtherKey="ID_NIVEL" Type="CONT_CUENTA" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CONT_RUBROS" Member="CONT_RUBROS">
+    <Type Name="CONT_RUBROS">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="DS_RUBRO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CD_RUBRO_BASE" Type="System.String" DbType="Char(3)" CanBeNull="true" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CONT_CUENTA" Member="CONT_CUENTA">
+    <Type Name="CONT_CUENTA">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CD_CUENTA" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DS_CUENTA" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="CD_TIPO_SALDO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FLG_DETALLE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ID_CUENTA_PADRE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_RUBRO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_NIVEL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="U_CREA" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="F_CREA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="U_ACTU" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="F_ACTU" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="CONT_CUENTA_CONT_DETA_PART_BORR" Member="CONT_DETA_PART_BORR" ThisKey="ID" OtherKey="ID_CUENTA" Type="CONT_DETA_PART_BORR" />
+      <Association Name="CONT_CUENTA_CONT_DETA_PART_DIARIO" Member="CONT_DETA_PART_DIARIO" ThisKey="ID" OtherKey="ID_CUENTA" Type="CONT_DETA_PART_DIARIO" />
+      <Association Name="CONT_CUENTA_CONT_SALDO" Member="CONT_SALDO" ThisKey="ID" OtherKey="ID" Type="CONT_SALDO" Cardinality="One" />
+      <Association Name="CONT_NIVEL_CUENTA_CONT_CUENTA" Member="CONT_NIVEL_CUENTA" ThisKey="ID_NIVEL" OtherKey="ID" Type="CONT_NIVEL_CUENTA" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_CONT_CUENTA" Member="V_CONT_CUENTA">
+    <Type Name="V_CONT_CUENTA">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CD_CUENTA" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DS_CUENTA" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="CD_TIPO_SALDO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FLG_DETALLE" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CD_CUENTA_PADRE" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="ID_RUBRO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_NIVEL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_RUBRO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="NM_NIVEL" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_CUENTA_PADRE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CONT_ENCA_PART_BORRADOR" Member="CONT_ENCA_PART_BORRADOR">
+    <Type Name="CONT_ENCA_PART_BORRADOR">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FE_PARTIDA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ID_DIARIO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DS_CONCEPTO" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="DS_REFERENCIA" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="CD_ESTA_PART" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_PART_DIA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="CONT_ENCA_PART_BORRADOR_CONT_DETA_PART_BORR" Member="CONT_DETA_PART_BORR" ThisKey="ID" OtherKey="ID_PART_BORR" Type="CONT_DETA_PART_BORR" />
+      <Association Name="CONT_DIARIO_CONT_ENCA_PART_BORRADOR" Member="CONT_DIARIO" ThisKey="ID_DIARIO" OtherKey="ID" Type="CONT_DIARIO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CONT_DETA_PART_BORR" Member="CONT_DETA_PART_BORR">
+    <Type Name="CONT_DETA_PART_BORR">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_PART_BORR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_CUENTA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_CENTRO_COSTO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_CONCEPTO" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="NM_CARGO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_ABONO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Association Name="CONT_CUENTA_CONT_DETA_PART_BORR" Member="CONT_CUENTA" ThisKey="ID_CUENTA" OtherKey="ID" Type="CONT_CUENTA" IsForeignKey="true" />
+      <Association Name="CONT_ENCA_PART_BORRADOR_CONT_DETA_PART_BORR" Member="CONT_ENCA_PART_BORRADOR" ThisKey="ID_PART_BORR" OtherKey="ID" Type="CONT_ENCA_PART_BORRADOR" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CONT_DETA_PART_DIARIO" Member="CONT_DETA_PART_DIARIO">
+    <Type Name="CONT_DETA_PART_DIARIO">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_PART_DIARIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_CUENTA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_CENTRO_COSTO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_CONCEPTO" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="NM_CARGO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_ABONO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Association Name="CONT_CUENTA_CONT_DETA_PART_DIARIO" Member="CONT_CUENTA" ThisKey="ID_CUENTA" OtherKey="ID" Type="CONT_CUENTA" IsForeignKey="true" />
+      <Association Name="CONT_ENCA_PART_DIARIO_CONT_DETA_PART_DIARIO" Member="CONT_ENCA_PART_DIARIO" ThisKey="ID_PART_DIARIO" OtherKey="ID" Type="CONT_ENCA_PART_DIARIO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CONT_ENCA_PART_DIARIO" Member="CONT_ENCA_PART_DIARIO">
+    <Type Name="CONT_ENCA_PART_DIARIO">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FE_PARTIDA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ID_DIARIO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DS_CONCEPTO" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="DS_REFERENCIA" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="CD_ESTA_PART" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Association Name="CONT_ENCA_PART_DIARIO_CONT_DETA_PART_DIARIO" Member="CONT_DETA_PART_DIARIO" ThisKey="ID" OtherKey="ID_PART_DIARIO" Type="CONT_DETA_PART_DIARIO" />
+      <Association Name="CONT_DIARIO_CONT_ENCA_PART_DIARIO" Member="CONT_DIARIO" ThisKey="ID_DIARIO" OtherKey="ID" Type="CONT_DIARIO" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CONT_SALDO" Member="CONT_SALDO">
+    <Type Name="CONT_SALDO">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMRPESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_CUENTA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_SALDO_INI" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_CARGO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_ABONO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Association Name="CONT_CUENTA_CONT_SALDO" Member="CONT_CUENTA" ThisKey="ID" OtherKey="ID" Type="CONT_CUENTA" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_CONT_ENCA_PART_BORRADOR" Member="V_CONT_ENCA_PART_BORRADOR">
+    <Type Name="V_CONT_ENCA_PART_BORRADOR">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FE_PARTIDA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ID_DIARIO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DS_CONCEPTO" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="DS_REFERENCIA" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="CD_ESTA_PART" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="ID_PART_DIA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_TIPO_DIARIO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_CONT_DETA_PART_BORR_AUX" Member="V_CONT_DETA_PART_BORR_AUX">
+    <Type Name="V_CONT_DETA_PART_BORR_AUX">
+      <Column Name="ID_PART_BORR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_ABONO" Type="System.Decimal" DbType="Decimal(38,6)" CanBeNull="true" />
+      <Column Name="NM_CARGO" Type="System.Decimal" DbType="Decimal(38,6)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_CONT_ULT_IMNPORT" Member="V_CONT_ULT_IMNPORT">
+    <Type Name="V_CONT_ULT_IMNPORT">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_PART_BORR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FE_IMPORT" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DS_CONCEPTO" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="DS_REFERENCIA" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="FE_PARTIDA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_DIARIO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DS_DIARIO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_CONT_ENCA_PART_DIARIO" Member="V_CONT_ENCA_PART_DIARIO">
+    <Type Name="V_CONT_ENCA_PART_DIARIO">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FE_PARTIDA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ID_DIARIO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DS_CONCEPTO" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="DS_REFERENCIA" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="CD_ESTA_PART" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="DS_TIPO_DIARIO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CONT_CONFIG" Member="CONT_CONFIG">
+    <Type Name="CONT_CONFIG">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_NIVEL_MAYOR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_NOMBRE_CONTADOR" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="FLG_USA_CENTRO_COSTO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CONT_LIBRO_AUX" Member="CONT_LIBRO_AUX">
+    <Type Name="CONT_LIBRO_AUX">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_CUENTA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_CUENTA_PADRE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_SALDO_INI" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_CARGOS" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_ABONOS" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_CONT_DETA_PART_DIARIO" Member="V_CONT_DETA_PART_DIARIO">
+    <Type Name="V_CONT_DETA_PART_DIARIO">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DS_CONCEPTO" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="ID_CUENTA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_PART_DIARIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_CENTRO_COSTO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_ABONO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_CARGO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="DS_CUENTA" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="DS_CENTRO_COSTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CD_CUENTA" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_CONT_DETA_PART_BORR" Member="V_CONT_DETA_PART_BORR">
+    <Type Name="V_CONT_DETA_PART_BORR">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="DS_CONCEPTO" Type="System.String" DbType="VarChar(1000)" CanBeNull="true" />
+      <Column Name="ID_CUENTA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_CENTRO_COSTO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_PART_BORR" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_ABONO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_CARGO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="DS_CUENTA" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="DS_CENTRO_COSTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="CD_CUENTA" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.PR_CONT_PART_BORR" Method="PR_CONT_PART_BORR">
+    <Parameter Name="ID_EMPRESA" Parameter="iD_EMPRESA" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NM_PERIODO" Parameter="nM_PERIODO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NM_EJERCICIO" Parameter="nM_EJERCICIO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NM_ERROR" Parameter="nM_ERROR" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="MSJ_ERROR" Parameter="mSJ_ERROR" Type="System.String" DbType="VarChar(100)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PR_CONT_DESCONT_PART_BORR" Method="PR_CONT_DESCONT_PART_BORR">
+    <Parameter Name="ID_EMPRESA" Parameter="iD_EMPRESA" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NM_PERIODO" Parameter="nM_PERIODO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NM_EJERCICIO" Parameter="nM_EJERCICIO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NM_ERROR" Parameter="nM_ERROR" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="MSJ_ERROR" Parameter="mSJ_ERROR" Type="System.String" DbType="VarChar(100)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PR_CONT_IMPO_PART_BORR" Method="PR_CONT_IMPO_PART_BORR">
+    <Parameter Name="ID_PART_BORR" Parameter="iD_PART_BORR" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID_PART_BORR_IMPO" Parameter="iD_PART_BORR_IMPO" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NM_ERROR" Parameter="nM_ERROR" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="MSJ_ERROR" Parameter="mSJ_ERROR" Type="System.String" DbType="VarChar(100)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>

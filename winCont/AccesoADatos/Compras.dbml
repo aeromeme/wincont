@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="WINCONT" EntityNamespace="ComprasDB" ContextNamespace="ComprasContext" Class="ComprasDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=LOCALHOST\SQLEXPRESS;Initial Catalog=WINCONT;Integrated Security=True" SettingsObjectName="winCont.Properties.Settings" SettingsPropertyName="WINCONTConnectionString5" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.COMP_QUEDAN" Member="COMP_QUEDAN">
+    <Type Name="COMP_QUEDAN">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FE_FECHA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ID_TERCERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_UBICACION_DEPT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_TIPO_DOCUMENTO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_SERIE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CD_NUMERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_ESTADO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Association Name="COMP_QUEDAN_COMP_DETA_QUEDAN" Member="COMP_DETA_QUEDAN" ThisKey="ID" OtherKey="ID_QUEDAN" Type="COMP_DETA_QUEDAN" />
+    </Type>
+  </Table>
+  <Table Name="dbo.COMP_DETA_QUEDAN" Member="COMP_DETA_QUEDAN">
+    <Type Name="COMP_DETA_QUEDAN">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_QUEDAN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_COMPRA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="COMP_QUEDAN_COMP_DETA_QUEDAN" Member="COMP_QUEDAN" ThisKey="ID_QUEDAN" OtherKey="ID" Type="COMP_QUEDAN" IsForeignKey="true" />
+      <Association Name="COMP_COMPRA_COMP_DETA_QUEDAN" Member="COMP_COMPRA" ThisKey="ID_COMPRA" OtherKey="ID" Type="COMP_COMPRA" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_COMP_QUEDAN" Member="V_COMP_QUEDAN">
+    <Type Name="V_COMP_QUEDAN">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_UBICACION_DEPT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_TIPO_DOCUMENTO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_SERIE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CD_NUMERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="FE_FECHA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ID_TERCERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_ESTADO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DS_DOCUMENTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_UBICACION" Type="System.String" DbType="VarChar(50)" CanBeNull="true" />
+      <Column Name="DS_NM_RF" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DS_NM_NIT" Type="System.String" DbType="VarChar(17)" CanBeNull="true" />
+      <Column Name="DS_NM_DUI" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="DS_RZN_COMER" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.COMP_COMPRA" Member="COMP_COMPRA">
+    <Type Name="COMP_COMPRA">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_TERCERO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FLG_CREDITO" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="FE_FECHA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FE_RECEPCION" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FE_VENCIMIENTO" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ID_TIPO_DOCUMENTO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CD_SERIE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CD_NUMERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_GRAVADO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_EXENTO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_SUJETO_A_RENTA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_IVA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_RETENCION" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_PERCEPCION" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_RENTA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_SALDO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_TOTAL" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="CD_ESTADO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="CD_ESTA_CONTA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="FLG_IMPO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ID_PART_PRFM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_INGRESO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="COMP_COMPRA_COMP_DETA_QUEDAN" Member="COMP_DETA_QUEDAN" ThisKey="ID" OtherKey="ID_COMPRA" Type="COMP_DETA_QUEDAN" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_COMP_COMPRA" Member="V_COMP_COMPRA">
+    <Type Name="V_COMP_COMPRA">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_EMPRESA" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NM_EJERCICIO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="NM_PERIODO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_TERCERO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="FE_FECHA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FE_VENCIMIENTO" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FE_RECEPCION" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="ID_TIPO_DOCUMENTO" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CD_SERIE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CD_NUMERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="NM_GRAVADO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_EXENTO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_SUJETO_A_RENTA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_IVA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_RETENCION" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_RENTA" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_SALDO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="CD_ESTADO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="DS_NOMBRE" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DS_DIRECCION" Type="System.String" DbType="VarChar(500)" CanBeNull="true" />
+      <Column Name="DS_RZN_COMER" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="DS_NM_RF" Type="System.String" DbType="VarChar(20)" CanBeNull="true" />
+      <Column Name="DS_NM_NIT" Type="System.String" DbType="VarChar(17)" CanBeNull="true" />
+      <Column Name="DS_NM_DUI" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="FLG_CREDITO" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="DS_DOCUMENTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="NM_TOTAL" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="FLG_IMPO" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ID_PART_PRFM" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_ESTA_CONTA" Type="System.Char" DbType="Char(1)" CanBeNull="true" />
+      <Column Name="ID_INGRESO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_CONDICION" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.V_COMP_DETA_QUEDAN" Member="V_COMP_DETA_QUEDAN">
+    <Type Name="V_COMP_DETA_QUEDAN">
+      <Column Name="ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="ID_COMPRA" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="ID_QUEDAN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CD_SERIE" Type="System.String" DbType="VarChar(10)" CanBeNull="true" />
+      <Column Name="CD_NUMERO" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="DS_DOCUMENTO" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="DS_CONDICION" Type="System.String" DbType="VarChar(7) NOT NULL" CanBeNull="false" />
+      <Column Name="FLG_CREDITO" Type="System.Char" DbType="Char(1) NOT NULL" CanBeNull="false" />
+      <Column Name="FE_FECHA" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="FE_VENCIMIENTO" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="DS_NOMBRE" Type="System.String" DbType="VarChar(200)" CanBeNull="true" />
+      <Column Name="NM_TOTAL" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+      <Column Name="NM_SALDO" Type="System.Decimal" DbType="Decimal(18,6)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.PR_COMP_ACTU_COMP" Method="PR_COMP_ACTU_COMP">
+    <Parameter Name="ID" Parameter="iD" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID_EMPRESA" Parameter="iD_EMPRESA" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NM_ERROR" Parameter="nM_ERROR" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="MSJ_ERROR" Parameter="mSJ_ERROR" Type="System.String" DbType="VarChar(100)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PR_COMP_IMPO_INGR_COMPR" Method="PR_COMP_IMPO_INGR_COMPR">
+    <Parameter Name="ID_ING" Parameter="iD_ING" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID_EMPRESA" Parameter="iD_EMPRESA" Type="System.Int32" DbType="Int" />
+    <Parameter Name="ID_COMP" Parameter="iD_COMP" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="NM_ERROR" Parameter="nM_ERROR" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="MSJ_ERROR" Parameter="mSJ_ERROR" Type="System.String" DbType="VarChar(100)" Direction="InOut" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.PR_CONT_GENE_CONT_COMP" Method="PR_CONT_GENE_CONT_COMP">
+    <Parameter Name="ID_COMPRA" Parameter="iD_COMPRA" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NM_ERROR" Parameter="nM_ERROR" Type="System.Int32" DbType="Int" Direction="InOut" />
+    <Parameter Name="MSJ_ERROR" Parameter="mSJ_ERROR" Type="System.String" DbType="VarChar(100)" Direction="InOut" />
+  </Function>
+</Database>

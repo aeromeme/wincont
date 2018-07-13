@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12.25, 11.375" name="Compras">
+  <DataContextMoniker Name="/ComprasDataContext" />
+  <nestedChildShapes>
+    <classShape Id="50a45f7b-4245-4e27-b150-7c8a13d75b25" absoluteBounds="7.5, 3.375, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/ComprasDataContext/COMP_QUEDAN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a4ac4b9c-61cb-4b32-a029-80524b0624b8" absoluteBounds="7.5150000000000006, 3.835, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c0026159-b467-47da-b0ae-8af4625d1fb2" absoluteBounds="9.875, 3.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/ComprasDataContext/COMP_DETA_QUEDAN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4d1d5a46-f9ff-45f0-99cc-db5e1082a4bb" absoluteBounds="9.89, 3.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(9.5 : 4.19314697265625); (9.875 : 4.19314697265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ComprasDataContext/COMP_QUEDAN/COMP_QUEDAN_COMP_DETA_QUEDAN" />
+      <nodes>
+        <classShapeMoniker Id="50a45f7b-4245-4e27-b150-7c8a13d75b25" />
+        <classShapeMoniker Id="c0026159-b467-47da-b0ae-8af4625d1fb2" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="7881fe1d-92e1-4883-bb06-deaf22f5d36d" absoluteBounds="7.5, 6.875, 2, 4.2708154296875">
+      <DataClassMoniker Name="/ComprasDataContext/V_COMP_QUEDAN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="32709274-9fe0-42ac-9747-f2dd4d5b1db4" absoluteBounds="7.515, 7.335, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="72241560-1574-47f2-b001-2da98b7794f6" absoluteBounds="1.5, 1.625, 2, 5.8092268880208326">
+      <DataClassMoniker Name="/ComprasDataContext/COMP_COMPRA" />
+      <nestedChildShapes>
+        <elementListCompartment Id="db891737-d9be-441e-901c-cbf2ab80b1a3" absoluteBounds="1.5150000000000001, 2.085, 1.9700000000000002, 5.249226888020833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(3.5 : 2.09375); (10.875 : 2.09375); (10.875 : 3.5)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ComprasDataContext/COMP_COMPRA/COMP_COMPRA_COMP_DETA_QUEDAN" />
+      <nodes>
+        <classShapeMoniker Id="72241560-1574-47f2-b001-2da98b7794f6" />
+        <classShapeMoniker Id="c0026159-b467-47da-b0ae-8af4625d1fb2" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="78cbc319-6ea3-428d-81f8-085a0b6bb282" absoluteBounds="4.25, 2.625, 2, 7.1553369140625">
+      <DataClassMoniker Name="/ComprasDataContext/V_COMP_COMPRA" />
+      <nestedChildShapes>
+        <elementListCompartment Id="44d450d4-a0a4-4c0d-b530-f6060c92fc71" absoluteBounds="4.265, 3.085, 1.9700000000000002, 6.5953369140625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ff86c20d-ccf4-450f-b73f-01a976f77ab8" absoluteBounds="10, 5.375, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/ComprasDataContext/V_COMP_DETA_QUEDAN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c78e4347-1cc8-4c7a-911e-8bb47104e65d" absoluteBounds="10.015, 5.835, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>

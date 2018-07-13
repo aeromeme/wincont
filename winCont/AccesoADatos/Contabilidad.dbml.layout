@@ -1,0 +1,176 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 11, 23.25" name="Contabilidad">
+  <DataContextMoniker Name="/ContabilidadDataContext" />
+  <nestedChildShapes>
+    <classShape Id="b7867fb2-08b4-42aa-83a0-d23f15f12e5b" absoluteBounds="2.875, 4, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/ContabilidadDataContext/CONT_DIARIO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7286de16-5cf0-4aac-b7fa-358a8393b6ee" absoluteBounds="2.8900000000000006, 4.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="223e26b9-110b-4d42-89bf-6cc71797509f" absoluteBounds="0.5, 4, 2, 1.3862939453125">
+      <DataClassMoniker Name="/ContabilidadDataContext/CONT_CENTRO_COSTO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c3e03fdc-2974-464d-bfcb-def3c9b99f61" absoluteBounds="0.51500000000000057, 4.4600000000000009, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="028bf134-5b71-4840-890e-75098e20a686" absoluteBounds="0.5, 2.25, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/ContabilidadDataContext/CONT_NIVEL_CUENTA" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a0301666-4fe8-4cdd-bc75-8e5da25c7cff" absoluteBounds="0.51500000000000012, 2.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="08e73003-a5ca-49b0-b566-e57ae514b97d" absoluteBounds="0.5, 0.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/ContabilidadDataContext/CONT_RUBROS" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8b17437d-95f5-402c-8bf9-3518c8d01155" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1c0f2121-a99e-4a73-8382-7a7dd6ffc773" absoluteBounds="2.875, 0.5, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/ContabilidadDataContext/CONT_CUENTA" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c35265e9-7b50-4282-b08a-9ac342c78822" absoluteBounds="2.89, 0.96, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.5 : 3.02965413411458); (2.60416416666667 : 3.02965413411458 : JumpStart); (2.77083083333333 : 3.02965413411458 : JumpEnd); (2.875 : 3.02965413411458)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ContabilidadDataContext/CONT_NIVEL_CUENTA/CONT_NIVEL_CUENTA_CONT_CUENTA" />
+      <nodes>
+        <classShapeMoniker Id="028bf134-5b71-4840-890e-75098e20a686" />
+        <classShapeMoniker Id="1c0f2121-a99e-4a73-8382-7a7dd6ffc773" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="4ab71f89-3bc5-4863-9e0a-760636ee7e25" absoluteBounds="5.25, 1.25, 2, 3.1170068359375">
+      <DataClassMoniker Name="/ContabilidadDataContext/V_CONT_CUENTA" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0cf1e306-f263-47fd-969b-9b27786b91f2" absoluteBounds="5.265, 1.71, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="76436f86-fbe3-4551-b08a-f70fca58c4c6" absoluteBounds="5.625, 9.125, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/ContabilidadDataContext/CONT_ENCA_PART_BORRADOR" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f666f170-6174-4ff9-8ce3-0e5a2df6386e" absoluteBounds="5.64, 9.585, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9fb1bbad-fe4a-4cab-ad3b-fca1ac5d3244" absoluteBounds="8.375, 7.125, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/ContabilidadDataContext/CONT_DETA_PART_BORR" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7dd67f7b-3d44-46a0-a1a3-f1a1b7cd77bd" absoluteBounds="8.39, 7.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1b38f806-fb93-4cf6-9d31-e643ba5d928d" absoluteBounds="8.375, 3.375, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/ContabilidadDataContext/CONT_DETA_PART_DIARIO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2c8f7456-29d5-4e8d-bba7-95a6709e4b78" absoluteBounds="8.39, 3.835, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c1d35fcf-1975-414a-b89a-65d526c35851" absoluteBounds="5.625, 5.75, 2, 2.5401025390624996">
+      <DataClassMoniker Name="/ContabilidadDataContext/CONT_ENCA_PART_DIARIO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cb640956-4e61-4f6b-9159-9e963f50480c" absoluteBounds="5.64, 6.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.28125 : 5.57859537760417); (4.28125 : 11.0088525390625); (5.625 : 11.0088525390625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ContabilidadDataContext/CONT_DIARIO/CONT_DIARIO_CONT_ENCA_PART_BORRADOR" />
+      <nodes>
+        <classShapeMoniker Id="b7867fb2-08b4-42aa-83a0-d23f15f12e5b" />
+        <classShapeMoniker Id="76436f86-fbe3-4551-b08a-f70fca58c4c6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.875 : 2.15465413411458); (5.1875 : 2.15465413411458); (5.1875 : 5.59299967447917); (7.38541666666667 : 5.59299967447917 : JumpStart); (7.55208333333333 : 5.59299967447917 : JumpEnd); (9.375 : 5.59299967447917); (9.375 : 7.125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ContabilidadDataContext/CONT_CUENTA/CONT_CUENTA_CONT_DETA_PART_BORR" />
+      <nodes>
+        <classShapeMoniker Id="1c0f2121-a99e-4a73-8382-7a7dd6ffc773" />
+        <classShapeMoniker Id="9fb1bbad-fe4a-4cab-ad3b-fca1ac5d3244" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.625 : 10.5689523229167); (9.375 : 10.5689523229167); (9.375 : 9.28049967447917)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ContabilidadDataContext/CONT_ENCA_PART_BORRADOR/CONT_ENCA_PART_BORRADOR_CONT_DETA_PART_BORR" />
+      <nodes>
+        <classShapeMoniker Id="76436f86-fbe3-4551-b08a-f70fca58c4c6" />
+        <classShapeMoniker Id="9fb1bbad-fe4a-4cab-ad3b-fca1ac5d3244" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.875 : 0.84375); (9.375 : 0.84375); (9.375 : 3.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ContabilidadDataContext/CONT_CUENTA/CONT_CUENTA_CONT_DETA_PART_DIARIO" />
+      <nodes>
+        <classShapeMoniker Id="1c0f2121-a99e-4a73-8382-7a7dd6ffc773" />
+        <classShapeMoniker Id="1b38f806-fb93-4cf6-9d31-e643ba5d928d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(7.46875 : 5.75); (7.46875 : 4.98000325520833); (8.375 : 4.98000325520833)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ContabilidadDataContext/CONT_ENCA_PART_DIARIO/CONT_ENCA_PART_DIARIO_CONT_DETA_PART_DIARIO" />
+      <nodes>
+        <classShapeMoniker Id="c1d35fcf-1975-414a-b89a-65d526c35851" />
+        <classShapeMoniker Id="1b38f806-fb93-4cf6-9d31-e643ba5d928d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(4.875 : 5.27929931640625); (5.10416666666667 : 5.27929931640625 : JumpStart); (5.27083333333333 : 5.27929931640625 : JumpEnd); (7.3593725 : 5.27929931640625); (7.3593725 : 5.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ContabilidadDataContext/CONT_DIARIO/CONT_DIARIO_CONT_ENCA_PART_DIARIO" />
+      <nodes>
+        <classShapeMoniker Id="b7867fb2-08b4-42aa-83a0-d23f15f12e5b" />
+        <classShapeMoniker Id="c1d35fcf-1975-414a-b89a-65d526c35851" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="43e8f1bc-a744-45e5-94fb-14d5b899a987" absoluteBounds="1.625, 7.75, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/ContabilidadDataContext/CONT_SALDO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="99f90be0-7af5-43ae-859d-0aee6b2015d4" absoluteBounds="1.6400000000000001, 8.21, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(2.875 : 1.73357506705729); (2.6874975 : 1.73357506705729); (2.6874975 : 7.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/ContabilidadDataContext/CONT_CUENTA/CONT_CUENTA_CONT_SALDO" />
+      <nodes>
+        <classShapeMoniker Id="1c0f2121-a99e-4a73-8382-7a7dd6ffc773" />
+        <classShapeMoniker Id="43e8f1bc-a744-45e5-94fb-14d5b899a987" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="3e1a5469-f4be-4204-b1d4-94db59fbe843" absoluteBounds="5.375, 12.125, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/ContabilidadDataContext/V_CONT_ENCA_PART_BORRADOR" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5f0d350e-a577-4a44-a977-a165d8d1abcb" absoluteBounds="5.39, 12.585, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="56e97eee-5dee-4c07-8b21-9b9b0158ae38" absoluteBounds="2.5, 12.375, 2, 1.3862939453125">
+      <DataClassMoniker Name="/ContabilidadDataContext/V_CONT_DETA_PART_BORR_AUX" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f2ec1475-6958-4129-ad5b-0dc98b8e1c6e" absoluteBounds="2.515, 12.835, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e387d965-b56f-4075-be3b-c22fdc6905e7" absoluteBounds="2.5, 14, 2, 2.5401025390625">
+      <DataClassMoniker Name="/ContabilidadDataContext/V_CONT_ULT_IMNPORT" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d31cb998-964d-4a1e-b722-40dcb7476bab" absoluteBounds="2.515, 14.46, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dd93bc7f-9392-4f0b-bf7b-c42c6addb7b6" absoluteBounds="3.375, 17.5, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/ContabilidadDataContext/V_CONT_ENCA_PART_DIARIO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="93513230-5120-4728-8254-521781688de3" absoluteBounds="3.39, 17.96, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ddc4513c-185b-4de3-8ea6-09f8d45d07c9" absoluteBounds="5.75, 18.25, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/ContabilidadDataContext/CONT_CONFIG" />
+      <nestedChildShapes>
+        <elementListCompartment Id="de5553de-2d50-4a73-a843-fbd90b982469" absoluteBounds="5.765, 18.71, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f249fbfd-83a9-433d-882a-8a005cce01a9" absoluteBounds="3.375, 20.5, 2, 2.5401025390625">
+      <DataClassMoniker Name="/ContabilidadDataContext/CONT_LIBRO_AUX" />
+      <nestedChildShapes>
+        <elementListCompartment Id="361d58f8-f355-46f3-9bd7-524116c4cfd9" absoluteBounds="3.39, 20.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c6790190-94bb-409a-91d7-0aa793f937bc" absoluteBounds="1, 17.5, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/ContabilidadDataContext/V_CONT_DETA_PART_DIARIO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f395151c-8777-434a-b3c6-10223f134871" absoluteBounds="1.0150000000000001, 17.96, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="18113d05-a41c-4102-9342-592c3031019e" absoluteBounds="5.625, 15.375, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/ContabilidadDataContext/V_CONT_DETA_PART_BORR" />
+      <nestedChildShapes>
+        <elementListCompartment Id="742bee94-6b5c-419a-a323-2ded7173589a" absoluteBounds="5.64, 15.835, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
