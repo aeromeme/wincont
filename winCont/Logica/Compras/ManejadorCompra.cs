@@ -23,6 +23,7 @@ namespace winCont.Logica.Compras
             List<COMP_COMPRA> l = new List<COMP_COMPRA>();
             l = (from u in _datasistema.ContextoCompras.COMP_COMPRA
                  select u).ToList();
+
             return l;
         }
 
